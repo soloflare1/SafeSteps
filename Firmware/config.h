@@ -1,0 +1,1 @@
+// config file with pins, deviceId, API URL

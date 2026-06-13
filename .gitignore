@@ -1,0 +1,57 @@
+
+# NODE BACKEND
+
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment files 
+.env
+.env.local
+.env.production
+
+
+# FRONTEND (React/Vite)
+
+Frontend/node_modules/
+Frontend/dist/
+Frontend/build/
+
+# Vite cache
+Frontend/.vite/
+Frontend/.cache/
+
+# env files in frontend
+Frontend/.env
+Frontend/.env.*
+
+
+# LOGS
+
+logs/
+*.log
+
+
+# OS FILES
+
+.DS_Store
+Thumbs.db
+
+
+# IDE / EDITOR
+
+.vscode/
+.idea/
+
+
+# ARDUINO / ESP32 FIRMWARE
+
+Firmware/*.bin
+Firmware/*.elf
+Firmware/*.map
+Firmware/build/
+Firmware/.pio/
+Firmware/.vscode/
+
+
+coverage/ 
