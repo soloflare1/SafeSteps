@@ -5,8 +5,10 @@ import MapView from "./components/MapView";
 export default function App() {
   return (
     <MainLayout>
-      <Dashboard />
-      <MapView />
+      <div style={{ display: "grid", gap: "20px" }}>
+        <Dashboard />
+        <MapView />
+      </div>
     </MainLayout>
   );
 }
