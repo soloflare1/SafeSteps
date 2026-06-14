@@ -15,30 +15,12 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  const devices = new Set(data.map(d => d.deviceId)).size;
-
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Dashboard Overview</h1>
+      <h2>📊 Dashboard</h2>
 
-      <div className="grid grid-cols-3 gap-4">
-        
-        <div className="bg-[#111A2E] p-5 rounded-xl">
-          <h3>Total Devices</h3>
-          <p className="text-3xl text-blue-400">{devices}</p>
-        </div>
-
-        <div className="bg-[#111A2E] p-5 rounded-xl">
-          <h3>Total Records</h3>
-          <p className="text-3xl text-green-400">{data.length}</p>
-        </div>
-
-        <div className="bg-[#111A2E] p-5 rounded-xl">
-          <h3>System Status</h3>
-          <p className="text-3xl text-red-400">LIVE</p>
-        </div>
-
-      </div>
+      <p>Total Records: {data.length}</p>
+      <p>Devices: {new Set(data.map(d => d.deviceId)).size}</p>
     </div>
   );
 }

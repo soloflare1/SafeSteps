@@ -2,12 +2,14 @@ import Sidebar from "../components/Sidebar";
 
 export default function MainLayout({ children }) {
   return (
-    <div className="flex bg-[#0B1220] text-white">
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      
       <Sidebar />
 
-      <div className="flex-1 p-6">
+      <div style={{ flex: 1, padding: "20px", background: "#0B1220", color: "white" }}>
         {children}
       </div>
+
     </div>
   );
 }
