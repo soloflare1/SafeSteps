@@ -1,11 +1,10 @@
+import MapView from "./components/MapView";
 
-import React from 'react'
-
-export default function App(){
+export default function App() {
   return (
-    <div style={{background:'#0B1220',color:'#E5E7EB',minHeight:'100vh',padding:'20px'}}>
-      <h1>SafeSteps Dashboard</h1>
-      <p>Frontend scaffold ready</p>
+    <div>
+      <h1 style={{ padding: "10px" }}>SafeSteps 🚀</h1>
+      <MapView />
     </div>
-  )
+  );
 }

@@ -1,22 +1,39 @@
+const express = require("express");
+const router = express.Router();
+const Location = require("../models/Location");
 
-const router = require('express').Router();
-const Location = require('../models/Location');
-
-// POST location
-router.post('/', async (req,res)=>{
-  try{
-    const data = new Location(req.body);
-    await data.save();
-    res.json({success:true});
-  }catch(err){
-    res.status(500).json({success:false,error:err.message});
-  }
+// GET all locations
+router.get("/", async (req, res) => {
+  const data = await Location.find().sort({ createdAt: -1 });
+  res.json(data);
 });
 
-// GET locations
-router.get('/', async (req,res)=>{
-  const data = await Location.find().sort({_id:-1}).limit(100);
-  res.json(data);
+// POST location (ANTI-DUPLICATE FIX)
+router.post("/", async (req, res) => {
+  try {
+    const { deviceId, lat, lng, mode } = req.body;
+
+    // 🔥 check last entry
+    const last = await Location.findOne({ deviceId }).sort({ createdAt: -1 });
+
+    if (last && last.lat === lat && last.lng === lng) {
+      return res.json({ skipped: true });
+    }
+
+    const location = new Location({
+      deviceId,
+      lat,
+      lng,
+      mode,
+      timestamp: new Date(),
+    });
+
+    await location.save();
+
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 module.exports = router;
